@@ -36,7 +36,63 @@
           </form>
         </div>
       </div>
-      <embed src="./pdf.pdf" type='application/pdf'>
+      <!-- <embed src="./pdf.pdf" type='application/pdf'>
+        <iframe src="./pdf.pdf" width="100%" height="600px"></iframe> -->
+        <!-- Include the PDF.js library -->
+<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+<!-- Define the HTML elements -->
+<div class="calign">
+  <canvas id="pdf-canvas"></canvas>
+</div>
+<div class="calign-justify">
+  <button id="prev-page">Previous</button>
+  <button id="next-page">Next</button>
+</div>
+
+<!-- Define the JavaScript code -->
+<script>
+  // Set the PDF file path
+  const pdfUrl = './pdf.pdf';
+
+  // Set the canvas element and get the context
+  const canvas = document.getElementById('pdf-canvas');
+  const context = canvas.getContext('2d');
+
+  // Set the initial page number
+  let pageNumber = 1;
+
+  // Load the PDF file
+  pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+    // Display the first page
+    displayPage(pdf, pageNumber);
+
+    // Add event listeners to the buttons
+    document.getElementById('prev-page').addEventListener('click', () => {
+      if (pageNumber > 1) {
+        pageNumber--;
+        displayPage(pdf, pageNumber);
+      }
+    });
+    document.getElementById('next-page').addEventListener('click', () => {
+      if (pageNumber < pdf.numPages) {
+        pageNumber++;
+        displayPage(pdf, pageNumber);
+      }
+    });
+  });
+
+  // Display a page on the canvas
+  function displayPage(pdf, pageNumber) {
+    pdf.getPage(pageNumber).then(page => {
+      const viewport = page.getViewport({ scale: 1.0 });
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      page.render({ canvasContext: context, viewport: viewport });
+    });
+  }
+</script>
+
     </div>
 </body>
 </html>

@@ -56,6 +56,18 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+.calign{
+  display: flex;
+  justify-content: center;
+}
+.calign canvas{
+  border: 2px solid #009579;
+}
+.calign-justify{
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px;
+}
 .nav{
     background: #009579;
     color: white;
