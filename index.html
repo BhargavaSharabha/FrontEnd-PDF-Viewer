@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!---Coding By CoderGirl | www.codinglabweb.com--->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--<title>Login & Registration Form | CoderGirl</title>-->
+  <!---Custom CSS File--->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+    <nav class="nav" >
+      <div class="nftm">
+        <h1>
+          PDS
+        </h1>
+        <div class="score">
+          <img src="./coin.png" alt="NFTM">
+          <span>0.00</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container-home">
+      <div class="lead">
+        <h2 class="uright">
+          Upload a PDF
+        </h2>
+        <div class="uleft">
+          <form action="#">
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+              <input class="btn" type="file" name="pdfFile" id="pdfFile">
+              <button class="btn" type="submit"  value="Upload PDF" > Upload PDF</button>
+            </form>
+            
+          </form>
+        </div>
+      </div>
+      <embed src="./pdf.pdf" type='application/pdf'>
+    </div>
+</body>
+</html>
+
